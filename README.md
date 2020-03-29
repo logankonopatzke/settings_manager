@@ -1,5 +1,5 @@
- # Quickstart C++ Project
+# Quickstart C++ Project
 
- A quickstart template for C++ projects
+A quickstart template for C++ projects
 
- - Logan Konopatzke
+- Logan Konopatzke
