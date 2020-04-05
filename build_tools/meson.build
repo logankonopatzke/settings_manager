@@ -1,4 +1,4 @@
-project('vmread', 'cpp', 'c', default_options : ['c_std=c99', 'c++_std=c++11'])
+project('cpp_quickstart', 'cpp', 'c', default_options : ['c_std=c99', 'c++_std=c++11'])
 
 compile_args = ['-D_POSIX_C_SOURCE=200809L', '-pedantic', '-DMVERBOSE=4', '-DMTR_ENABLED', '-DREAD_CHECK']
 compile_args_external = ['-DLMODE=MODE_EXTERNAL', '-fsanitize=address']
@@ -36,12 +36,9 @@ foreach arg : try_args_c
   endif
 endforeach
 
-dl = meson.get_compiler('c').find_library('dl', required : false)
-thread = meson.get_compiler('c').find_library('pthread', required : false)
-
 CPP_Quickstart = executable(
   'CPP_Quickstart',
-  files(['../src/example_file.cpp']),
+  files(['../src/main.cpp']),
   c_args : c_compile_args + compile_args + compile_args_external,
   cpp_args : cpp_compile_args + compile_args + compile_args_external,
   link_args : compile_args + compile_args_external + link_args + link_args_external,
