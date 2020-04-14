@@ -1,4 +1,4 @@
-project('cpp_quickstart', 'cpp', 'c', default_options : ['c_std=c99', 'c++_std=c++11'])
+project('cpp_quickstart', 'cpp', 'c', version : '1.0.0', default_options : ['c_std=c99', 'cpp_std=c++17'])
 
 compile_args = ['-D_POSIX_C_SOURCE=200809L', '-pedantic', '-DMVERBOSE=4', '-DMTR_ENABLED', '-DREAD_CHECK']
 compile_args_external = ['-DLMODE=MODE_EXTERNAL', '-fsanitize=address']
