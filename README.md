@@ -1,5 +1,5 @@
-# Quickstart C++ Project
+# Settings Manager
 
-A quickstart template for C++ projects
+Basic settings manager that supports saving and loading to JSON.
 
-- Logan Konopatzke
+* **Requires jsoncpp**
