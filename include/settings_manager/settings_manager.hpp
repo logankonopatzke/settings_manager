@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <array>
 
 namespace settings_manager
 {
@@ -9,13 +10,8 @@ namespace settings_manager
         type_none, // Note: support for saving and loading to JSON files will be unavailable if this is the active type
         type_bool,
         type_int,
-        type_float
-    };
-
-    union settings_value {
-        bool bool_value;
-        int int_value;
-        float float_value;
+        type_float,
+        type_color
     };
 
     struct settings_node
@@ -32,10 +28,12 @@ namespace settings_manager
         ~settings_node() = default;
 
     private:
-        union {
+        union
+        {
             bool m_value_bool;
             int m_value_int;
             float m_value_float;
+            std::array<float, 3> m_value_color;
         };
 
     public:
@@ -55,6 +53,12 @@ namespace settings_manager
         {
             m_type = type_float;
             return m_value_float;
+        }
+
+        std::array<float, 3> &value_color()
+        {
+            m_type = type_color;
+            return m_value_color;
         }
     };
 

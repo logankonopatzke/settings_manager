@@ -49,6 +49,19 @@ namespace settings_manager
                 if (json.isMember(it.first))
                     it.second.value_float() = json[it.first].asFloat();
                 break;
+
+            case type_color:
+                if (json.isMember(it.first))
+                {
+                    auto &color = json[it.first];
+                    if (color.isMember("r") && color.isMember("g") && color.isMember("b"))
+                    {
+                        it.second.value_color()[0] = color["r"].asFloat();
+                        it.second.value_color()[1] = color["g"].asFloat();
+                        it.second.value_color()[2] = color["b"].asFloat();
+                    }
+                }
+                break;
             }
         }
     }
@@ -74,6 +87,13 @@ namespace settings_manager
 
             case type_float:
                 json[it.first] = it.second.value_float();
+                break;
+
+            case type_color:
+                auto &color = json[it.first];
+                color["r"] = it.second.value_color()[0];
+                color["g"] = it.second.value_color()[1];
+                color["b"] = it.second.value_color()[2];
                 break;
             }
         }
