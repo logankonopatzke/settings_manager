@@ -11,7 +11,29 @@ namespace settings_manager
 
     void add(const std::string &name, settings_type type)
     {
-        map[name] = settings_node(type);
+        settings_node node{type};
+        switch (type)
+        {
+        case type_none:
+            // We can't do anything because we don't know the active type in the union
+            break;
+        case type_bool:
+            node.value_bool() = false;
+            break;
+
+        case type_int:
+            node.value_int() = 0;
+            break;
+
+        case type_float:
+            node.value_float() = 0.0f;
+            break;
+
+        case type_color:
+            node.value_color() = {0.0f, 0.0f, 0.0f};
+            break;
+        }
+        map[name] = std::move(node);
     }
 
     settings_node &get(const std::string &name)
