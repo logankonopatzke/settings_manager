@@ -39,25 +39,25 @@ namespace settings_manager
         };
 
     public:
-        bool &value_bool() const
+        bool &value_bool()
         {
             assert(m_type == type_bool && "Type different from value getter" v);
             return m_value_bool;
         }
 
-        int &value_int() const
+        int &value_int()
         {
             assert(m_type == type_int && "Type different from value getter");
             return m_value_int;
         }
 
-        float &value_float() const
+        float &value_float()
         {
             assert(m_type == type_float && "Type different from value getter");
             return m_value_float;
         }
 
-        std::array<float, 3> &value_color() const
+        std::array<float, 3> &value_color()
         {
             assert(m_type == type_color && "Type different from value getter");
             return m_value_color;

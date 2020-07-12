@@ -52,30 +52,32 @@ namespace settings_manager
 
         for (auto &it : map)
         {
+            const auto setting_name = std::to_string(it.first);
+
             switch (it.second.m_type)
             {
             case type_none:
                 // We can't do anything because we don't know the active type in the union
                 break;
             case type_bool:
-                if (json.isMember(it.first))
-                    it.second.value_bool() = json[it.first].asBool();
+                if (json.isMember(settings_name))
+                    it.second.value_bool() = json[settings_name].asBool();
                 break;
 
             case type_int:
-                if (json.isMember(it.first))
-                    it.second.value_int() = json[it.first].asInt();
+                if (json.isMember(settings_name))
+                    it.second.value_int() = json[settings_name].asInt();
                 break;
 
             case type_float:
-                if (json.isMember(it.first))
-                    it.second.value_float() = json[it.first].asFloat();
+                if (json.isMember(settings_name))
+                    it.second.value_float() = json[settings_name].asFloat();
                 break;
 
             case type_color:
-                if (json.isMember(it.first))
+                if (json.isMember(settings_name))
                 {
-                    auto &color = json[it.first];
+                    auto &color = json[settings_name];
                     if (color.isMember("r") && color.isMember("g") && color.isMember("b"))
                     {
                         it.second.value_color()[0] = color["r"].asFloat();
@@ -94,25 +96,27 @@ namespace settings_manager
 
         for (auto &it : map)
         {
+            const auto setting_name = std::to_string(it.first);
+
             switch (it.second.m_type)
             {
             case type_none:
                 // We can't do anything because we don't know the active type in the union
                 break;
             case type_bool:
-                json[it.first] = it.second.value_bool();
+                json[setting_name] = it.second.value_bool();
                 break;
 
             case type_int:
-                json[it.first] = it.second.value_int();
+                json[setting_name] = it.second.value_int();
                 break;
 
             case type_float:
-                json[it.first] = it.second.value_float();
+                json[setting_name] = it.second.value_float();
                 break;
 
             case type_color:
-                auto &color = json[it.first];
+                auto &color = json[setting_name];
                 color["r"] = it.second.value_color()[0];
                 color["g"] = it.second.value_color()[1];
                 color["b"] = it.second.value_color()[2];
