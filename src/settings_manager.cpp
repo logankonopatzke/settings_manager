@@ -7,9 +7,9 @@
 
 namespace settings_manager
 {
-    static std::unordered_map<std::string, settings_node> map;
+    static std::unordered_map<std::uint32_t, settings_node> map;
 
-    void add(const std::string &name, settings_type type)
+    void add(std::uint32_t name, settings_type type)
     {
         settings_node node{type};
         switch (type)
@@ -36,7 +36,7 @@ namespace settings_manager
         map[name] = std::move(node);
     }
 
-    settings_node &get(const std::string &name)
+    settings_node &get(std::uint32_t name)
     {
         return map[name];
     }
