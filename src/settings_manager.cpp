@@ -60,24 +60,24 @@ namespace settings_manager
                 // We can't do anything because we don't know the active type in the union
                 break;
             case type_bool:
-                if (json.isMember(settings_name))
-                    it.second.value_bool() = json[settings_name].asBool();
+                if (json.isMember(setting_name))
+                    it.second.value_bool() = json[setting_name].asBool();
                 break;
 
             case type_int:
-                if (json.isMember(settings_name))
-                    it.second.value_int() = json[settings_name].asInt();
+                if (json.isMember(setting_name))
+                    it.second.value_int() = json[setting_name].asInt();
                 break;
 
             case type_float:
-                if (json.isMember(settings_name))
-                    it.second.value_float() = json[settings_name].asFloat();
+                if (json.isMember(setting_name))
+                    it.second.value_float() = json[setting_name].asFloat();
                 break;
 
             case type_color:
-                if (json.isMember(settings_name))
+                if (json.isMember(setting_name))
                 {
-                    auto &color = json[settings_name];
+                    auto &color = json[setting_name];
                     if (color.isMember("r") && color.isMember("g") && color.isMember("b"))
                     {
                         it.second.value_color()[0] = color["r"].asFloat();
