@@ -41,7 +41,7 @@ namespace settings_manager
     public:
         bool &value_bool()
         {
-            assert(m_type == type_bool && "Type different from value getter" v);
+            assert(m_type == type_bool && "Type different from value getter");
             return m_value_bool;
         }
 
